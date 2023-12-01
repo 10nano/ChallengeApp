@@ -1,30 +1,24 @@
 ﻿// Ustawianie danych
 var name = "Ewa";
-var age = 36;
+var age = 13;
 // 'W' = Woman, 'M' = Man
 var sex = 'M';
-var noOutput = true;
 
 // weryfikacja i wyswietlanie
 if (sex == 'W' && age < 30)
 {
-    Console.WriteLine("Hi woman under thirty");
-    noOutput = false;
+    Console.WriteLine("Hi woman under thirty.");
 }
-if (name == "Ewa" && age == 33)
+else if (name == "Ewa" && age == 33 && sex == 'W')
 {
-    // chciałem sprawdzić jak to działa
-    Console.WriteLine($"Hi {name}, you are {age} old");
-    noOutput = false;
+    Console.WriteLine($"Hi {name}, you are {age} old.");
 }
-if (sex == 'M' && age < 18)
+else if (sex == 'M' && age < 18)
 {
-    Console.WriteLine("Hi adolescent man");
-    noOutput = false;
+    Console.WriteLine("Hi adolescent man.");
 }
-if (noOutput)
+else
 {
     Console.WriteLine("Hello unknown!");
-    noOutput = false;
 }
 
