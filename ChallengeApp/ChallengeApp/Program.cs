@@ -25,5 +25,6 @@ if (sex == 'M' && age < 18)
 if (noOutput)
 {
     Console.WriteLine("Hello unknown!");
+    noOutput = false;
 }
 
