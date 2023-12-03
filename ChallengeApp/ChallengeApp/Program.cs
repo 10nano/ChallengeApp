@@ -1,6 +1,10 @@
-﻿const int allDigitsCount = 10;
+﻿/*
+ * Zadanie zrobione bez podpowiedzi było pouczające.
+ * Zaraz idę zobaczyć podpowiedź
+*/
+const int allDigitsCount = 10;
 
-ulong number = 4566457566;
+ulong number = 45664157566; // Dana liczba
 
 string numberInString = number.ToString();
 char[] letters = numberInString.ToCharArray();
@@ -9,19 +13,21 @@ int[] digits = new int[allDigitsCount];
 
 foreach (var item in digits)
 {
-    digits[item] = 0;
+    digits[item] = 0; // Zerowania wystąpień każdej cyfry
 }
-
-Console.WriteLine($"Wyniki dla liczby {number}\n");
 
 foreach (var item in letters)
 {
-    // konwersja znaku cyfry na cyfrę
+    // Bezpośrednia konwersja znaku cyfry typu char na cyfrę typu int daje 
+    // reprezentacje liczbwą danej cyfry w ASCII, dlatego po odjęciu wartości
+    // ASCII zera otrzymuję właściwą wartość cyfry typu int np.: '7' -> 7
     int i = item - '0';
 
-    digits[i]++;
+    ++digits[i]; // Zliczanie wystąpień każdej cyfry
 
 }
+
+Console.WriteLine($"Wyniki dla liczby {number}\n");
 
 for (int i = 0; i < allDigitsCount; i++)
 {
