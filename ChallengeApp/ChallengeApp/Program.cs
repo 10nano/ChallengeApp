@@ -9,11 +9,11 @@ ulong number = 45664157566; // Dana liczba
 string numberInString = number.ToString();
 char[] letters = numberInString.ToCharArray();
 
-int[] digits = new int[allDigitsCount];
+int[] digit = new int[allDigitsCount];
 
-foreach (var item in digits)
+foreach (var item in digit)
 {
-    digits[item] = 0; // Zerowania wystąpień każdej cyfry
+    digit[item] = 0; // Zerowania wystąpień każdej cyfry
 }
 
 foreach (var item in letters)
@@ -23,7 +23,7 @@ foreach (var item in letters)
     // ASCII zera otrzymuję właściwą wartość cyfry typu int np.: '7' -> 7
     int i = item - '0';
 
-    ++digits[i]; // Zliczanie wystąpień każdej cyfry
+    ++digit[i]; // Zliczanie wystąpień każdej cyfry
 
 }
 
@@ -31,5 +31,5 @@ Console.WriteLine($"Wyniki dla liczby {number}\n");
 
 for (int i = 0; i < allDigitsCount; i++)
 {
-    Console.WriteLine($"Cyfra {i} występuje {digits[i]} krotnie");
+    Console.WriteLine($"Cyfra {i} występuje {digit[i]} krotnie");
 }
