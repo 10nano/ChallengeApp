@@ -1,23 +1,29 @@
-﻿// Ustawianie danych
-var name = "Ewa";
-var age = 33;
-var isWoman = true;
+﻿const int allDigitsCount = 10;
 
-// weryfikacja i wyswietlanie
-if (isWoman && age < 30)
+ulong number = 4566457566;
+
+string numberInString = number.ToString();
+char[] letters = numberInString.ToCharArray();
+
+int[] digits = new int[allDigitsCount];
+
+foreach (var item in digits)
 {
-    Console.WriteLine("Kobieta poniżej 30 lat");
-}
-else if (name == "Ewa" && age == 33 && isWoman)
-{
-    Console.WriteLine("Ewa, lat 33");
-}
-else if (!isWoman && age < 18)
-{
-    Console.WriteLine("Niepełnoletni Mężczyzna");
-}
-else
-{
-    Console.WriteLine("Ktoś nieznany");
+    digits[item] = 0;
 }
 
+Console.WriteLine($"Wyniki dla liczby {number}\n");
+
+foreach (var item in letters)
+{
+    // konwersja znaku cyfry na cyfrę
+    int i = item - '0';
+
+    digits[i]++;
+
+}
+
+for (int i = 0; i < allDigitsCount; i++)
+{
+    Console.WriteLine($"Cyfra {i} występuje {digits[i]} krotnie");
+}
