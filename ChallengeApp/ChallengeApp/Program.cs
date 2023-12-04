@@ -3,33 +3,31 @@
  * Zaraz idę zobaczyć podpowiedź...
 */
 
-const int NumberOfAllDigits = 10;
+const int NumberOfAllallDigitss = 10;
 
-ulong number = 45664157566; // Dana liczba.
-
+ulong number = 4565634515375; // Dana liczba.
 string numberInString = number.ToString();
 char[] letters = numberInString.ToCharArray();
+int[] allDigits = new int[NumberOfAllallDigitss];
 
-int[] digit = new int[NumberOfAllDigits];
-
-foreach (int item in digit)
+foreach (int digit in allDigits)
 {
-    digit[item] = 0; // Zerowania wystąpień każdej cyfry.
+    allDigits[digit] = 0; // Zerowania wystąpień każdej cyfry.
 }
 
-foreach (char item in letters)
+foreach (char letter in letters)
 {
     // Bezpośrednia konwersja znaku cyfry typu char na cyfrę typu int daje 
     // reprezentacje liczbwą danej cyfry w ASCII, dlatego po odjęciu wartości
     // ASCII zera otrzymuję właściwą wartość cyfry typu int np.: '7' -> 7
-    int i = item - '0';
+    int i = letter - '0';
 
-    ++digit[i]; // Zliczanie wystąpień każdej cyfry.
+    ++allDigits[i]; // Zliczanie wystąpień każdej cyfry.
 }
 
-Console.WriteLine($"Wyniki dla liczby {number}\n");
+Console.WriteLine($"Wyniki dla liczby {numberInString}\n");
 
-for (int i = 0; i < NumberOfAllDigits; i++)
+for (int i = 0; i < NumberOfAllallDigitss; i++)
 {
-    Console.WriteLine($"Cyfra {i} występuje {digit[i]} krotnie");
+    Console.WriteLine($"Cyfra {i} występuje {allDigits[i]} krotnie");
 }
