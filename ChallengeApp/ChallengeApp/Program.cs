@@ -5,7 +5,7 @@
 
 const int NumberOfAllallDigitss = 10;
 
-ulong number = 4565634515375; // Dana liczba.
+ulong number = 4565634515375;
 string numberInString = number.ToString();
 char[] letters = numberInString.ToCharArray();
 int[] allDigits = new int[NumberOfAllallDigitss];
