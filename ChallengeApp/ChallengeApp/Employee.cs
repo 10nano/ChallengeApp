@@ -1,4 +1,5 @@
-﻿namespace ChallengeApp
+﻿// -------------------------------------------------
+namespace ChallengeApp
 {
     public class Employee
     {
