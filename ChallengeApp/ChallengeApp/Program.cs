@@ -7,6 +7,7 @@
 /// 3. Napisz program, który wyszuka pracownika z najwyższą liczbą ocen
 /// a następnie wyświetli jego dane oraz wynik.
 /// 
+/// Wersja ze wskazówką - lista pracowników - można łatwo dodawać kolejnych pracowników.
 
 using ChallengeApp;
 
