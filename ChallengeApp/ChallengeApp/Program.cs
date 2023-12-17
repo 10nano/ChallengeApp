@@ -10,39 +10,45 @@
 
 using ChallengeApp;
 
-var user1 = new Employee("Adam", "Kowalski", 44);
-var user2 = new Employee("Zuzia", "Nowak", 23);
-var user3 = new Employee("Damian", "Zientarski", 33);
+var emp1 = new Employee("Adam", "Kowalski", 44);
+var emp2 = new Employee("Zuzia", "Nowak", 23);
+var emp3 = new Employee("Damian", "Zientarski", 33);
 
-user1.AddScore(5);
-user2.AddScore(6);
-user3.AddScore(7);
-user1.AddScore(8);
-user2.AddScore(9);
-user3.AddScore(10);
-user1.AddScore(1);
-user2.AddScore(2);
-user3.AddScore(3);
-user1.AddScore(4);
-user2.AddScore(5);
-user3.AddScore(6);
-user1.AddScore(7);
-user2.AddScore(8);
-user3.AddScore(9);
+emp1.AddScore(5);
+emp2.AddScore(6);
+emp3.AddScore(7);
 
-Employee bestEmployee;
+emp1.AddScore(8);
+emp2.AddScore(9);
+emp3.AddScore(10);
 
-if (user1.Result > user2.Result && user1.Result > user3.Result)
+emp1.AddScore(1);
+emp2.AddScore(2);
+emp3.AddScore(3);
+
+emp1.AddScore(4);
+emp2.AddScore(5);
+emp3.AddScore(6);
+
+emp1.AddScore(7);
+emp2.AddScore(8);
+emp3.AddScore(9);
+
+List<Employee> employees = new List<Employee>()
 {
-    bestEmployee = user1;
-}
-else if (user2.Result > user3.Result)
+    emp1, emp2, emp3
+};
+
+int bestResult = -1;    
+Employee bestEmployee = null;
+
+foreach (var employee in employees)
 {
-    bestEmployee = user2;
-}
-else
-{
-    bestEmployee = user3;
+    if (employee.Result > bestResult)
+    {
+        bestEmployee = employee;    
+    }
+    
 }
 
 Console.WriteLine($"W tym miesiącu z wynikiem {bestEmployee.Result} najlepszym pracownikiem został:");
