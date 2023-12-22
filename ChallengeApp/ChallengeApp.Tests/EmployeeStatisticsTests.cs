@@ -1,5 +1,3 @@
-using System.Reflection.Metadata;
-
 namespace ChallengeApp.Tests
 {
     public class Tests
@@ -17,6 +15,11 @@ namespace ChallengeApp.Tests
 
             // Act
             var statistics = employee.GetStatistics();
+            statistics.Min = 99; // Mo¿na "zepsuæ" test, poniewa¿ wszystkie propercje
+            // w klasie Statistics maj¹ publiczny set !!!
+            // Pomys³ na poprawienie - ustawianie pocz¹tkowych wartoœci Max Min Average 
+            // w konstruktorze klasy Statistics
+
             // Assert
             Assert.That(statistics.Min,Is.EqualTo(0f)); // Poprawione po Warning NUnit2005 
         }
