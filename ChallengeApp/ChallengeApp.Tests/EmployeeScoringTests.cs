@@ -6,53 +6,48 @@ namespace ChallengeApp.Tests
     {
  
         [Test]
-        public void WhenAddEmployeeScores_ThenCorrectMinimumValue()
+        public void WhenAddEmployeeScores_ThenCorrectResult()
         {
             // Arrange
-            var employee = new Employee("Jan", "Dêbski");
+            var emp1 = new Employee("Jan", "Dêbski", 38);
 
-            employee.AddScore(3);
-            employee.AddScore(0);
-            employee.AddScore(1);
+            emp1.AddScore(7);
+            emp1.AddScore(8);
+            emp1.AddScore(1);
 
             // Act
-            var statistics = employee.GetStatistics();
+            var result1 = emp1.Result;
             // Assert
-            // Assert.AreEqual(0f, statistics.Min); // tutaj by³ warning NUnit2005
-            Assert.That(statistics.Min,Is.EqualTo(0f));
+            Assert.AreEqual(16, result1);
         }
         [Test]
-        public void WhenAddEmployeeScores_ThenCorrectMaximumValue()
+        public void WhenAddEmployeeNegativeScores_ThenCorrectZeroResult()
         {
             // Arrange
-            var employee = new Employee("Karol", "Grzyb");
+            var emp2 = new Employee("Karol", "Grzyb", 42);
 
-            employee.AddScore(3);
-            employee.AddScore(0);
-            employee.AddScore(1);
+            emp2.AddScore(1);
+            emp2.AddScore(-1);
 
             // Act
-            var statistics = employee.GetStatistics();
+            var result2 = emp2.Result;
             // Assert
-            Assert.That(statistics.Max, Is.EqualTo(3f));
+            Assert.AreEqual(0, result2);
         }
         [Test]
-        public void WhenAddEmployeeScores_ThenCorrectAverage()
+        public void WhenAddEmployeeNegativeScores_ThenCorrectNegativeResult()
         {
             // Arrange
-            var employee = new Employee("Hanna", "Solska");
+            var emp3 = new Employee("Hanna", "Solska", 26);
 
-            employee.AddScore(3);
-            employee.AddScore(0);
-            employee.AddScore(1);
+            emp3.AddScore(10);
+            emp3.AddScore(-1);
+            emp3.AddScore(-10);
 
             // Act
-            var statistics = employee.GetStatistics();
+            var result3 = emp3.Result;
             // Assert
-            Assert.That(statistics.Average, Is.EqualTo(1.33333337f));
-            // tutaj mia³em problem jak zapisaæ oczekiwan¹ wartoœæ 1.(3),
-            // ale pomóg³ mi nieudany test, który powiedzia³ czego oczekuje,
-            // a to zgadza³o siê z moj¹ intuicj¹ matematyczn¹ 1 . 3 na siedmiu miejscach
+            Assert.AreEqual(-1, result3);
         }
 
 
