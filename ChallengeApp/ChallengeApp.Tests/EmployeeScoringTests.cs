@@ -6,48 +6,52 @@ namespace ChallengeApp.Tests
     {
  
         [Test]
-        public void WhenAddEmployeeScores_ThenCorrectResult()
+        public void WhenAddEmployeeScores_ThenCorrectMinimumValue()
         {
             // Arrange
-            var emp1 = new Employee("Jan", "Dêbski", 38);
+            var employee = new Employee("Jan", "Dêbski");
 
-            emp1.AddScore(7);
-            emp1.AddScore(8);
-            emp1.AddScore(1);
+            employee.AddScore(3);
+            employee.AddScore(0);
+            employee.AddScore(1);
 
             // Act
-            var result1 = emp1.Result;
+            var statistics = employee.GetStatistics();
             // Assert
-            Assert.AreEqual(16, result1);
+            Assert.AreEqual(0f, statistics.Min);
         }
         [Test]
-        public void WhenAddEmployeeNegativeScores_ThenCorrectZeroResult()
+        public void WhenAddEmployeeScores_ThenCorrectMaximumValue()
         {
             // Arrange
-            var emp2 = new Employee("Karol", "Grzyb", 42);
+            var employee = new Employee("Karol", "Grzyb");
 
-            emp2.AddScore(1);
-            emp2.AddScore(-1);
+            employee.AddScore(3);
+            employee.AddScore(0);
+            employee.AddScore(1);
 
             // Act
-            var result2 = emp2.Result;
+            var statistics = employee.GetStatistics();
             // Assert
-            Assert.AreEqual(0, result2);
+            Assert.AreEqual(3f, statistics.Max);
         }
         [Test]
-        public void WhenAddEmployeeNegativeScores_ThenCorrectNegativeResult()
+        public void WhenAddEmployeeScores_ThenCorrectAverage()
         {
             // Arrange
-            var emp3 = new Employee("Hanna", "Solska", 26);
+            var employee = new Employee("Hanna", "Solska");
 
-            emp3.AddScore(10);
-            emp3.AddScore(-1);
-            emp3.AddScore(-10);
+            employee.AddScore(3);
+            employee.AddScore(0);
+            employee.AddScore(1);
 
             // Act
-            var result3 = emp3.Result;
+            var statistics = employee.GetStatistics();
             // Assert
-            Assert.AreEqual(-1, result3);
+            Assert.AreEqual(1.33333337f, statistics.Average);
+            // tutaj mia³em problem jak zapisaæ oczekiwan¹ wartoœæ 1.(3),
+            // ale pomóg³ mi nieudany test, który powiedzia³ czego oczekuje,
+            // a to zgadza³o siê z moj¹ intuicj¹ matematyczn¹ 1 . 3 na siedmiu miejscach
         }
 
 
