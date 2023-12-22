@@ -18,7 +18,7 @@ namespace ChallengeApp.Tests
             // Act
             var statistics = employee.GetStatistics();
             // Assert
-            Assert.AreEqual(0f, statistics.Min);
+            Assert.That(statistics.Min,Is.EqualTo(0f)); // Poprawione po Warning NUnit2005 
         }
         [Test]
         public void WhenAddEmployeeScores_ThenCorrectMaximumValue()
@@ -33,7 +33,7 @@ namespace ChallengeApp.Tests
             // Act
             var statistics = employee.GetStatistics();
             // Assert
-            Assert.AreEqual(3f, statistics.Max);
+            Assert.That(statistics.Max, Is.EqualTo(3f));
         }
         [Test]
         public void WhenAddEmployeeScores_ThenCorrectAverage()
@@ -48,7 +48,7 @@ namespace ChallengeApp.Tests
             // Act
             var statistics = employee.GetStatistics();
             // Assert
-            Assert.AreEqual(1.33333337f, statistics.Average);
+            Assert.That(statistics.Average, Is.EqualTo(1.33333337f));
             // tutaj mia³em problem jak zapisaæ oczekiwan¹ wartoœæ 1.(3),
             // ale pomóg³ mi nieudany test, który powiedzia³ czego oczekuje,
             // a to zgadza³o siê z moj¹ intuicj¹ matematyczn¹ 1 . 3 na siedmiu miejscach
