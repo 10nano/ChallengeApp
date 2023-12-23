@@ -16,9 +16,10 @@ namespace ChallengeApp.Tests
             // Act
             var statistics = employee.GetStatistics();
             statistics.Min = 99; // Mo¿na "zepsuæ" test, bo wszystkie propercje w klasie
-            // Statistics maj¹ publiczny set. Jest tak, bo zmienne Min, Max, Average s¹ ustawiane
-            // w klasie Employee.
-            // Na razie nie wiem jak to mo¿na naprawiæ - nie zagl¹da³em jeszcze do lekcji dnia 10
+            // Statistics maj¹ publiczny set. Jest tak, bo zmienne Min, Max, Average
+            // s¹ ustawiane w klasie Employee.
+            // Na razie nie wiem jak to mo¿na naprawiæ - nie zagl¹da³em jeszcze do lekcji
+            // dnia 10
 
             // Assert
             Assert.That(statistics.Min,Is.EqualTo(0f)); // Poprawione po Warning NUnit2005 

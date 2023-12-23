@@ -27,7 +27,34 @@
 
         public void AddScore(float score)
         {
-            this.scores.Add(score);
+            if (score >= 0 && score <= 100)
+            {
+                this.scores.Add(score);
+            }
+            else
+            {
+                Console.WriteLine($"Score value: {score} is out of range");
+            }
+                
+        }
+        public void AddScore(string score)
+        {
+            if (float.TryParse(score, out float result))
+            {
+                this.AddScore(result);
+            }
+            else
+            {
+                Console.WriteLine($"String: {score} is not float");
+            }
+        }
+        public void AddScore(double score)
+        {
+            this.AddScore((float)score);
+        }
+        public void AddScore(long score)
+        {
+            this.AddScore((float)score);
         }
 
         public Statistics GetStatistics()
