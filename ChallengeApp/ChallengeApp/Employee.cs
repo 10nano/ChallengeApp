@@ -1,35 +1,28 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> scores = new List<float>();
 
-        public Employee(string name, string surname, int age)
+        public Employee()
+            : this("NoName")
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = age;
+        }
+
+        public Employee(string name)
+            : this(name, "NoSurname")
+        {
         }
 
         public Employee(string name, string surname)
+            : this(name, surname, 0, '-')
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Age = -1;
-        }
-        
-        public Employee()
-        {
-            this.Name = "Test";
-            this.Surname = "Test";
-            this.Age = -1;
         }
 
-        public string Name { get; private set; }
-
-        public string Surname { get; private set; }
-
-        public int Age { get; private set; }
+        public Employee(string name, string surname, int age, char sex)
+            : base(name, surname, age, sex)
+        {
+        }
 
         public void AddScore(float score)
         {
@@ -39,7 +32,7 @@
             }
             else
             {
-                Console.WriteLine($"Score value: {score} is out of range");
+                throw new Exception($"Score value: {score} is out of range");
             }
         }
 
@@ -55,7 +48,7 @@
             }
             else
             {
-                Console.WriteLine($"String: {score} is not float");
+                throw new Exception($"String: {score} is not float");
             }
         }
 
@@ -79,8 +72,7 @@
                     this.AddScore(20);
                     break;
                 default:
-                    Console.WriteLine($"Wrong Letter: {score}");
-                    break;
+                    throw new Exception($"Wrong Letter: {score}");
             }
         }
 
