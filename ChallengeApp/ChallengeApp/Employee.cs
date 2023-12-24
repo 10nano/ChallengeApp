@@ -17,7 +17,7 @@
             this.Surname = surname;
             this.Age = -1;
         }
-        
+
         public Employee()
         {
             this.Name = "Test";
@@ -39,7 +39,7 @@
             }
             else
             {
-                Console.WriteLine($"Score value: {score} is out of range");
+                throw new Exception($"Score value: {score} is out of range");
             }
         }
 
@@ -55,7 +55,7 @@
             }
             else
             {
-                Console.WriteLine($"String: {score} is not float");
+                throw new Exception($"String: {score} is not float");
             }
         }
 
@@ -79,8 +79,7 @@
                     this.AddScore(20);
                     break;
                 default:
-                    Console.WriteLine($"Wrong Letter: {score}");
-                    break;
+                    throw new Exception($"Wrong Letter: {score}");
             }
         }
 

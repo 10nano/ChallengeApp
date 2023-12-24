@@ -6,15 +6,22 @@ Console.WriteLine();
 
 var employee = new Employee("Adam", "Kowalski");
 
-while(true)
+while (true)
 {
     Console.WriteLine("Podaj kolejną ocenę: ");
     var input = Console.ReadLine();
-    if(input == "")
+    if (input == "")
     {
         break;
     }
-    employee.AddScore(input);
+    try
+    {
+        employee.AddScore(input);
+    }
+    catch (Exception exc)
+    {
+        Console.WriteLine($" Exeption catched: {exc.Message}");
+    }
 }
 
 var statistics = employee.GetStatistics();
