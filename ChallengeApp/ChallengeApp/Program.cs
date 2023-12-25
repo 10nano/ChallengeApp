@@ -33,4 +33,3 @@ Console.WriteLine($"Średnia ocena: {statistics.Average:N2}");
 Console.WriteLine($"Minimalna: {statistics.Min}");
 Console.WriteLine($"Maksymalna: {statistics.Max}");
 Console.WriteLine($"Średnia litera: {statistics.AverageLetter}");
-

@@ -15,6 +15,6 @@
 
         public int Age { get; private set; }
 
-        public  char Sex {  get; private set; }
+        public char Sex { get; private set; }
     }
 }
