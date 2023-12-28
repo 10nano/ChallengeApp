@@ -24,8 +24,18 @@ namespace ChallengeApp
             }
             else
             {
-                throw new Exception($"SUPERVISOR: Score value: {score} is out of range");
+                throw new Exception($"Score value: {score} is out of range");
             }
+        }
+
+        public void AddScore(double score)
+        {
+            this.AddScore((float)score);
+        }
+
+        public void AddScore(int score)
+        {
+            this.AddScore((float)score);
         }
 
         public void AddScore(string score)
@@ -62,7 +72,7 @@ namespace ChallengeApp
                 }
                 else
                 {
-                    throw new Exception($"SUPERVISOR: Wrong grade: {score}");
+                    throw new Exception($"Wrong score: {score}");
                 }
             }
             else if (score.Length == 1)
@@ -71,7 +81,7 @@ namespace ChallengeApp
             }
             else
             {
-                throw new Exception($"SUPERVISOR: Wrong grade: {score}");
+                throw new Exception($"Wrong score: {score}");
             }
 
             switch (evalstr)
@@ -95,7 +105,7 @@ namespace ChallengeApp
                     evaluate = 0;
                     break;
                 default:
-                    throw new Exception($"SUPERVISOR: Wrong grade: {score}");
+                    throw new Exception($"Wrong score: {score}");
             }
             this.AddScore((float)(evaluate + modifier));
         }
@@ -122,7 +132,7 @@ namespace ChallengeApp
                     this.AddScore(20);
                     break;
                 default:
-                    throw new Exception($"SUPERVISOR: Wrong Letter: {score}");
+                    throw new Exception($"Wrong Letter: {score}");
             }
         }
 
