@@ -4,7 +4,8 @@ Console.WriteLine("Witamy w Programie ABC do oceny pracowników");
 Console.WriteLine("============================================");
 Console.WriteLine();
 
-var employee = new Employee("Adam");
+// var employee = new Employee("Adam", "Kowalski");
+var employee = new Supervisor("Adam", "Kowalski");
 
 while (true)
 {
@@ -27,8 +28,7 @@ while (true)
 var statistics = employee.GetStatistics();
 
 Console.WriteLine();
-Console.WriteLine($"Pracownik {employee.Name} {employee.Surname} " +
-    $"wiek {employee.Age} płeć {employee.Sex}");
+Console.WriteLine($"Pracownik {employee.Name} {employee.Surname}");
 Console.WriteLine($"Średnia ocena: {statistics.Average:N2}");
 Console.WriteLine($"Minimalna: {statistics.Min}");
 Console.WriteLine($"Maksymalna: {statistics.Max}");

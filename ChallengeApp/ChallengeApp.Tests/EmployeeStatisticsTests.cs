@@ -7,10 +7,10 @@ namespace ChallengeApp.Tests
         public void WhenAddAnyEmployeeScores_ThenCorrectMinValue()
         {
             // Arrange
-            var employee = new Employee();
-            employee.AddScore(0);
-            employee.AddScore(100);
-            employee.AddScore(80);
+            var employee = new Supervisor("A","B");
+            employee.AddScore("3+");
+            employee.AddScore("-4");
+            employee.AddScore("1");
 
             // Act
             var statistics = employee.GetStatistics();
@@ -24,10 +24,10 @@ namespace ChallengeApp.Tests
         public void WhenAddEmployeeScores_ThenCorrectMaxValue()
         {
             // Arrange
-            var employee = new Employee();
-            employee.AddScore(40);
-            employee.AddScore(100);
-            employee.AddScore(80);
+            var employee = new Supervisor("A", "B");
+            employee.AddScore("5-");
+            employee.AddScore("6");
+            employee.AddScore("+2");
 
             // Act
             var statistics = employee.GetStatistics();
@@ -39,27 +39,27 @@ namespace ChallengeApp.Tests
         public void WhenAddEmployeeScores_ThenCorrectAvgValue()
         {
             // Arrange
-            var employee = new Employee();
-            employee.AddScore(30);
-            employee.AddScore(0);
-            employee.AddScore(100);
+            var employee = new Supervisor("A", "B");
+            employee.AddScore("5");
+            employee.AddScore("2+");
+            employee.AddScore("3-");
 
             // Act
             var statistics = employee.GetStatistics();
 
             // Assert
             var value = Math.Round(statistics.Average, 2);
-            Assert.That(value, Is.EqualTo(43.33d));
+            Assert.That(value, Is.EqualTo(46.67d));
         }
 
         [Test]
         public void WhenAddEmployeeScores_ThenCorrectAvgLetter()
         {
             // Arrange
-            var employee = new Employee();
-            employee.AddScore(30);
-            employee.AddScore(0);
-            employee.AddScore(100);
+            var employee = new Supervisor("A", "B");
+            employee.AddScore("5");
+            employee.AddScore("2+");
+            employee.AddScore("3-");
 
             // Act
             var statistics = employee.GetStatistics();

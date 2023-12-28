@@ -1,10 +1,12 @@
-﻿namespace ChallengeApp
+﻿using System.ComponentModel.Design;
+
+namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public class Supervisor : IEmployee
     {
         private List<float> scores = new List<float>();
 
-        public Employee(string name, string surname)
+        public Supervisor(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
@@ -22,25 +24,83 @@
             }
             else
             {
-                throw new Exception($"EMPLOYEE: Score value: {score} is out of range");
+                throw new Exception($"SUPERVISOR: Score value: {score} is out of range");
             }
         }
 
         public void AddScore(string score)
         {
-            if (float.TryParse(score, out float result))
+            float modifier = 0;
+            float evaluate;
+            char evalstr;
+
+            if (score.Length == 2)
             {
-                this.AddScore(result);
+                if (score[0] == '-' || score[1] == '-')
+                {
+                    modifier = -5;
+                    if (score[0] == '-')
+                    {
+                        evalstr = score[1];
+                    }
+                    else
+                    {
+                        evalstr = score[0];
+                    }
+                }
+                else if (score[0] == '+' || score[1] == '+')
+                {
+                    modifier = 5;
+                    if (score[0] == '+')
+                    {
+                        evalstr = score[1];
+                    }
+                    else
+                    {
+                        evalstr = score[0];
+                    }
+                }
+                else
+                {
+                    throw new Exception($"SUPERVISOR: Wrong grade: {score}");
+                }
             }
             else if (score.Length == 1)
             {
-                AddScore((char)score[0]);
+                evalstr = score[0];
             }
             else
             {
-                throw new Exception($"EMPLOYEE: String: {score} is not float");
+                throw new Exception($"SUPERVISOR: Wrong grade: {score}");
             }
+
+            switch (evalstr)
+            {
+                case '6':
+                    evaluate = 100;
+                    break;
+                case '5':
+                    evaluate = 80;
+                    break;
+                case '4':
+                    evaluate = 60;
+                    break;
+                case '3':
+                    evaluate = 40;
+                    break;
+                case '2':
+                    evaluate = 20;
+                    break;
+                case '1':
+                    evaluate = 0;
+                    break;
+                default:
+                    throw new Exception($"SUPERVISOR: Wrong grade: {score}");
+            }
+            this.AddScore((float)(evaluate + modifier));
         }
+
+
 
         public void AddScore(char score)
         {
@@ -62,9 +122,10 @@
                     this.AddScore(20);
                     break;
                 default:
-                    throw new Exception($"EMPLOYEE: Wrong Letter: {score}");
+                    throw new Exception($"SUPERVISOR: Wrong Letter: {score}");
             }
         }
+
 
         public Statistics GetStatistics()
         {
