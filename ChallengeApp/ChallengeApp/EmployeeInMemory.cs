@@ -2,6 +2,7 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
+
         private List<float> scores = new List<float>();
 
         public EmployeeInMemory(string name, string surname) 
@@ -14,6 +15,7 @@
             if (score >= 0 && score <= 100)
             {
                 this.scores.Add(score);
+                SnapEventScoreAdded();
             }
             else
             {

@@ -16,6 +16,7 @@
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(score);
+                    SnapEventScoreAdded();
                 }
             }
             else
