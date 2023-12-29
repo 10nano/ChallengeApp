@@ -8,16 +8,16 @@ var employeeFile = new EmployeeInFile("Adam", "Kowalski");
 var employeeMemory = new EmployeeInMemory("Jan", "Nowak");
 
 employeeFile.ScoreAdded += EmployeeScoreAdded;
+employeeMemory.ScoreAdded += EmployeeScoreAdded;
 
 void EmployeeScoreAdded(object sender, EventArgs args)
 {
     Console.WriteLine("Dodano nową ocenę");
 }
 
-employeeFile.AddScore(0.5f);
 employeeFile.AddScore(5);
 employeeFile.AddScore("55");
-employeeFile.AddScore('A');
+employeeFile.AddScore('B');
 
 while (true)
 {
