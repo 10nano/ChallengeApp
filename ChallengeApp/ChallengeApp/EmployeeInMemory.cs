@@ -2,16 +2,6 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
-        public override event ScoreAddedDelegate ScoreAdded;
-
-        public void SnapEventScoreAdded()
-        {
-            if (ScoreAdded != null)
-            {
-                ScoreAdded(this, new EventArgs());
-            }
-        }
-
         private List<float> scores = new List<float>();
 
         public EmployeeInMemory(string name, string surname)

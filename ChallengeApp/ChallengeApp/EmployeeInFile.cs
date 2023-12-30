@@ -2,16 +2,6 @@
 {
     public class EmployeeInFile : EmployeeBase
     {
-        public override event ScoreAddedDelegate ScoreAdded;
-
-        public void SnapEventScoreAdded()
-        {
-            if (ScoreAdded != null)
-            {
-                ScoreAdded(this, new EventArgs());
-            }
-        }
-
         public const string fileName = "scores.txt";
 
         public EmployeeInFile(string name, string surname)

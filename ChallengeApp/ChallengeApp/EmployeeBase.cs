@@ -3,15 +3,15 @@
     public abstract class EmployeeBase : IEmployee
     {
         public delegate void ScoreAddedDelegate(object sender, EventArgs args);
-        public abstract event ScoreAddedDelegate ScoreAdded;
+        public event ScoreAddedDelegate ScoreAdded;
 
-        //public void SnapEventScoreAdded()
-        //{
-        //    if (ScoreAdded != null)
-        //    {
-        //        ScoreAdded(this, new EventArgs());
-        //    }
-        //}
+        public void SnapEventScoreAdded()
+        {
+            if (ScoreAdded != null)
+            {
+                ScoreAdded(this, new EventArgs());
+            }
+        }
 
         public EmployeeBase(string name, string surname)
         {
