@@ -3,20 +3,20 @@
     public abstract class EmployeeBase : IEmployee
     {
         public delegate void ScoreAddedDelegate(object sender, EventArgs args);
-        public event ScoreAddedDelegate ScoreAdded;
+        public abstract event ScoreAddedDelegate ScoreAdded;
 
-        public void SnapEventScoreAdded()
-        {
-            if (ScoreAdded != null)
-            {
-                ScoreAdded(this, new EventArgs());
-            }
-        }
+        //public void SnapEventScoreAdded()
+        //{
+        //    if (ScoreAdded != null)
+        //    {
+        //        ScoreAdded(this, new EventArgs());
+        //    }
+        //}
 
         public EmployeeBase(string name, string surname)
         {
-            this.Name = name;
-            this.Surname = surname;
+            Name = name;
+            Surname = surname;
         }
 
         public string Name { get; private set; }
@@ -39,11 +39,11 @@
         {
             if (float.TryParse(score, out float result))
             {
-                this.AddScore(result);
+                AddScore(result);
             }
             else if (score.Length == 1)
             {
-                AddScore((char)score[0]);
+                AddScore(score[0]);
             }
             else
             {

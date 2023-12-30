@@ -2,6 +2,16 @@
 {
     public class EmployeeInFile : EmployeeBase
     {
+        public override event ScoreAddedDelegate ScoreAdded;
+
+        public void SnapEventScoreAdded()
+        {
+            if (ScoreAdded != null)
+            {
+                ScoreAdded(this, new EventArgs());
+            }
+        }
+
         public const string fileName = "scores.txt";
 
         public EmployeeInFile(string name, string surname)
@@ -18,6 +28,7 @@
                     writer.WriteLine(score);
                     SnapEventScoreAdded();
                 }
+                
             }
             else
             {
@@ -27,8 +38,8 @@
 
         public override Statistics GetStatistics()
         {
-            var scoresFromFile = this.ReadScoresFromFile();
-            var result = this.CountStatistics(scoresFromFile);
+            var scoresFromFile = ReadScoresFromFile();
+            var result = CountStatistics(scoresFromFile);
             return result;
         }
 
@@ -53,36 +64,12 @@
         private Statistics CountStatistics(List<float> scores)
         {
             Statistics statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
 
             foreach (var score in scores)
             {
-                statistics.Max = Math.Max(statistics.Max, score);
-                statistics.Min = Math.Min(statistics.Min, score);
-                statistics.Average += score;
+                statistics.AddScore(score);
             }
-            statistics.Average /= scores.Count;
 
-            switch (statistics.Average)
-            {
-                case var average when average > 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average > 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average > 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average > 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
             return statistics;
         }
     }

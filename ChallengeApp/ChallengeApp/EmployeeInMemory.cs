@@ -2,10 +2,19 @@
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        public override event ScoreAddedDelegate ScoreAdded;
+
+        public void SnapEventScoreAdded()
+        {
+            if (ScoreAdded != null)
+            {
+                ScoreAdded(this, new EventArgs());
+            }
+        }
 
         private List<float> scores = new List<float>();
 
-        public EmployeeInMemory(string name, string surname) 
+        public EmployeeInMemory(string name, string surname)
             : base(name, surname)
         {
         }
@@ -14,7 +23,7 @@
         {
             if (score >= 0 && score <= 100)
             {
-                this.scores.Add(score);
+                scores.Add(score);
                 SnapEventScoreAdded();
             }
             else
@@ -26,35 +35,10 @@
         public override Statistics GetStatistics()
         {
             Statistics statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
 
-            foreach (var score in this.scores)
+            foreach (var score in scores)
             {
-                statistics.Max = Math.Max(statistics.Max, score);
-                statistics.Min = Math.Min(statistics.Min, score);
-                statistics.Average += score;
-            }
-            statistics.Average /= this.scores.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average > 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average > 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average > 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average > 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
+                statistics.AddScore(score);
             }
             return statistics;
         }
